@@ -1,0 +1,47 @@
+/**
+ *  a roman numeral, convert it to an integer.
+ *  sample console.log(romanToInt("MCMXCIV")
+ *  return sample 1994
+ * @func romanToInt
+ * @param {string} s
+ * @return {number} 
+ */
+var romanToInt = function(s) {
+    let sum = 0;
+    for(let i = 0 ; i <= s.split('').length - 1; i++){
+       switch(s.split('')[i]){
+                case 'I':
+                    if (s.split('')[i+1] == 'V' || s.split('')[i+1] == 'X') 
+                        --sum;
+                    else
+                        ++sum;
+                    break;
+                case 'V':
+                    sum+=5;
+                    break;
+                case 'X':
+                    if (s.split('')[i+1] == 'L' || s.split('')[i+1] == 'C') 
+                        sum-=10;
+                    else
+                        sum+=10;
+                    break;
+                case 'L':
+                    sum+=50;
+                    break;
+                case 'C':
+                    if (s.split('')[i+1] == 'D' || s.split('')[i+1] == 'M') 
+                        sum-=100;
+                    else
+                        sum+=100;
+                    break;
+                case 'D':
+                    sum+=500;
+                    break;
+                case 'M':
+                    sum+=1000;
+                    break;
+            }
+    }
+
+    return sum
+};
